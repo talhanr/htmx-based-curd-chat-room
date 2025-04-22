@@ -35,18 +35,11 @@ bash
 Copy
 npm install
 Running the Application
-Start the server:
-
-bash
-Copy
-http-server
-Open your browser and navigate to http://localhost:8080.
+Start the server: npm start
 
 Running Tests
 This project uses Jest for unit testing. To run the tests:
 
-bash
-Copy
 npm test
 You should see output indicating whether the tests passed or failed.
 
