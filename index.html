@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beautiful Chat App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.3"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Chat App</h1>
+        <p id="loggedInUser">Not logged in</p>
+      </header>
+      <div class="main">
+        <!-- Left Section -->
+        <section class="left-section">
+          <!-- Login Area -->
+          <div class="login-area">
+            <h2>Login</h2>
+            <form
+              id="loginForm"
+              hx-post="/login"
+              hx-target="#loggedInUser"
+              hx-swap="innerHTML"
+            >
+              <input
+                type="text"
+                id="loginUsername"
+                name="username"
+                placeholder="Enter your username"
+                required
+                class="input"
+              />
+              <button type="submit" class="btn">Login</button>
+            </form>
+          </div>
+
+          <!-- Room Management -->
+          <div class="room-management">
+            <h2>Manage Rooms</h2>
+            <form
+              id="chatRoomForm"
+              hx-post="/create-room"
+              hx-target="#chatRoomList"
+              hx-swap="beforeend"
+            >
+              <input
+                type="text"
+                id="chatRoomName"
+                name="roomName"
+                placeholder="Enter chat room name"
+                required
+                class="input"
+              />
+              <p id="roomMessage" class="message"></p>
+              <!-- Placeholder for messages -->
+              <button type="submit" class="btn">Create/Assign Room</button>
+            </form>
+            <ul id="chatRoomList" class="chat-room-list">
+              <!-- Chat rooms will be dynamically added here -->
+            </ul>
+          </div>
+        </section>
+
+        <!-- Right Section -->
+        <section class="right-section">
+          <h2>Chat Room</h2>
+          <div id="chatArea" class="chat-area">
+            <p>Select a room to join the chat.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
